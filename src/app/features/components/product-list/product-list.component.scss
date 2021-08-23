@@ -1,0 +1,50 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+   
+}
+
+
+
+.btnStyle{
+padding: 5px 15px;
+border: none;
+border-radius: 5px;
+background: #d82121c4;
+color: white;
+font-weight: 550;
+}
+
+.addprouctStyle{
+padding: 7px 20px;
+background: blue;
+color: white;
+font-weight: 550;
+border: none;
+border-radius: 5px;
+}
+
+.productsStyle{
+    margin: 0px 100px;
+}
+
+.toastrStyle{
+  background: lightgreen;
+  font-weight: 550;
+  font-size: 14px;
+  padding: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 550;
+}

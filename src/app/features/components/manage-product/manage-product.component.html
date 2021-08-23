@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<div class="row" style="margin: auto; width: 90vh">
+  <div class="toastrStyle" *ngIf="productAdded">
+    Product {{ productType }} Successfully
+  </div>
+
+  <form [formGroup]="productForm">
+    <div class="col-md-12 text-center">
+      <input
+        type="text"
+        class="form-control mb-3"
+        formControlName="name"
+        placeholder="Product Name"
+      />
+      <select
+        class="form-select mb-3"
+        aria-label="Default select example"
+        formControlName="ram"
+        placeholder="Product RAM"
+      >
+        <option disabled hidden value="">Select RAM</option>
+        <option [value]="i.code" *ngFor="let i of allRams">
+          {{ i.label }}
+        </option>
+      </select>
+
+      <select
+        class="form-select mb-3"
+        aria-label="Default select example"
+        formControlName="memory"
+      >
+        <option selected disabled hidden value="">Select Memory</option>
+        <option [value]="i.code" *ngFor="let i of allMemories">
+          {{ i.label }}
+        </option>
+      </select>
+      <select
+        class="form-select mb-3"
+        aria-label="Default select example"
+        formControlName="camera"
+        placeholder="Product Price"
+      >
+        <option selected disabled hidden value="">Select Camera</option>
+        <option [value]="i.code" *ngFor="let i of allCameras">
+          {{ i.label }}
+        </option>
+      </select>
+      <input
+        type="text"
+        class="form-control mb-3"
+        formControlName="price"
+        placeholder="Product Price"
+      />
+
+      <button
+        (click)="addProduct()"
+        class="btn btn-success mb-3"
+        *ngIf="!productId"
+      >
+        Add Product
+      </button>
+      <button
+        (click)="addProduct()"
+        class="btn btn-success mb-3"
+        *ngIf="productId"
+      >
+        Update Product
+      </button>
+
+      <button class="btn btn-danger mb-3" style="margin-left: 10px">
+        <a style="text-decoration: none; color: white" href="/products"
+          >Cancel</a
+        >
+      </button>
+    </div>
+  </form>
+</div>

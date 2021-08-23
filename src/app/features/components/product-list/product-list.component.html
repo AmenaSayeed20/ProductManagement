@@ -1,0 +1,114 @@
+<app-header></app-header>
+
+<div class="toastrStyle" *ngIf="showDelete">
+  <span>Product Has been Deleted</span>
+</div>
+<div class="productsStyle">
+  <div class="row p-2">
+    <div class="col-md-9">
+      <h5>Products List</h5>
+    </div>
+
+    <div class="col-md-3" style="text-align: right">
+      <button [routerLink]="['/manageproduct']" class="addprouctStyle">
+        Add Product
+      </button>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Ram</th>
+      <th>Memory</th>
+      <th>Camera</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let eachobj of allProducts">
+      <td>
+        <img
+          *ngIf="eachobj.imageUrl != ''"
+          style="width: 100px"
+          src="{{ eachobj.imageUrl }}"
+        />
+        <img
+          *ngIf="eachobj.imageUrl == null"
+          style="width: 100px; height: 100px"
+          src="../../assets/Samsung.jpg"
+        />
+      </td>
+      <td>{{ eachobj.name }}</td>
+      <td>
+        <span *ngFor="let e_data of allMemories"
+          ><span *ngIf="e_data.code.toString() == eachobj.memory.toString()"
+            >{{ e_data.label }}
+          </span></span
+        >
+      </td>
+      <td>
+        <span *ngFor="let e_data of allRams"
+          ><span *ngIf="e_data.code.toString() == eachobj.ram.toString()"
+            >{{ e_data.label }}
+          </span></span
+        >
+      </td>
+      <td>
+        <span *ngFor="let e_data of allCameras"
+          ><span *ngIf="e_data.code.toString() == eachobj.camera.toString()"
+            >{{ e_data.label }}
+          </span></span
+        >
+      </td>
+      <td>{{ eachobj.price }}</td>
+      <td>
+        <button
+          [routerLink]="['/manageproduct', eachobj.id]"
+          class="addprouctStyle"
+          style="margin-right: 5px"
+        >
+          Edit
+        </button>
+
+        <button
+          class="btnStyle"
+          style="padding: 7px 15px"
+          (click)="deleteProduct(eachobj)"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div
+          class="modal-body"
+          style="text-align: center; padding: 17px 0px 2px 0px"
+        >
+          <h6>Are You Sure To Delete Product</h6>
+        </div>
+
+        <div class="modal-footer" style="border: none; margin: auto">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+          <button type="button" class="btn btn-primary" (click)="delete()">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
